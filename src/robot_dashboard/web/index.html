@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>数智巡检平台</title>
+  <link rel="stylesheet" href="/style.css?v=20260907-7">
+  <script>
+    window.addEventListener("error", (event) => {
+      const overlay = document.getElementById("urdf-overlay");
+      if (!overlay) return;
+      const source = event.filename || event.target?.src || "三维模块";
+      overlay.textContent = `模型脚本错误：${event.message || "资源加载失败"} (${source})`;
+      overlay.classList.add("error");
+      overlay.hidden = false;
+    }, true);
+    window.addEventListener("unhandledrejection", (event) => {
+      const overlay = document.getElementById("urdf-overlay");
+      if (!overlay) return;
+      overlay.textContent = `模型加载异常：${event.reason?.message || event.reason || "未知错误"}`;
+      overlay.classList.add("error");
+      overlay.hidden = false;
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <div>
+      <p class="eyebrow">PERSON FOLLOW · PIPER GRASP</p>
+      <h1>数智巡检平台</h1>
+    </div>
+    <div class="connection"><span id="connection-dot"></span><span id="connection-text">正在连接 ROS 2…</span></div>
+  </header>
+
+  <main>
+    <section class="panel follow-panel">
+      <div class="panel-heading">
+        <div><p class="number">01 / 小车跟随</p></div>
+        <div class="actions">
+          <button class="primary" data-action="follow/start">启动跟随</button>
+          <button class="danger" data-action="follow/stop">停止并置零</button>
+        </div>
+      </div>
+      <div class="media-grid">
+        <div class="camera-wrap">
+          <div class="media-label"><span>相机画面</span><span id="follow-camera-age">无画面</span></div>
+          <img src="/stream/follow.mjpg?v=20260907-2" data-stream="/stream/follow.mjpg" alt="小车人员识别画面">
+        </div>
+        <div class="telemetry">
+          <div class="state-card accent"><span>当前动作</span><strong id="direction">停止</strong><small id="follow-process">进程未启动</small></div>
+          <div class="metric-row"><div><span>线速度</span><strong id="linear">0.000</strong><small>m/s</small></div><div><span>角速度</span><strong id="angular">0.000</strong><small>rad/s</small></div></div>
+          <div class="heading"><span>车身航向</span><strong id="yaw">0.0°</strong><div class="compass"><i id="compass-arrow"></i></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel arm-panel">
+      <div class="panel-heading">
+        <div><p class="number">02 / 机械臂控制</p></div>
+        <div class="actions">
+          <button class="primary" data-action="arm/start">启动机械臂</button>
+          <button data-action="arm/ready">到准备姿态</button>
+          <button class="grasp" data-action="grasp/start">抓取 bottle</button>
+          <button class="danger" data-action="grasp/cancel">取消抓取</button>
+          <button class="danger ghost" data-action="arm/stop">停止机械臂节点</button>
+        </div>
+      </div>
+      <div class="arm-grid">
+        <div class="camera-wrap">
+          <div class="media-label"><span>腕部相机画面</span><span id="arm-camera-age">无画面</span></div>
+          <img src="/stream/arm.mjpg?v=20260907-2" data-stream="/stream/arm.mjpg" alt="机械臂腕部相机识别画面">
+        </div>
+        <div class="pose-wrap">
+          <div class="media-label"><span>机械臂实时模型</span><span id="joint-age">无关节反馈</span></div>
+          <canvas id="arm-canvas"></canvas>
+          <div id="urdf-overlay" class="model-overlay">正在加载 Piper URDF 与 STL 模型…</div>
+          <div id="joint-list" class="joint-list"></div>
+        </div>
+      </div>
+      <div class="arm-status-row">
+        <div><span>任务状态</span><strong id="grasp-status">机械臂未启动</strong></div>
+        <div><span>末端位置 XYZ</span><strong id="end-position">0.000 / 0.000 / 0.000 m</strong></div>
+        <div><span>任务结果码</span><strong id="grasp-result">0</strong></div>
+      </div>
+    </section>
+
+    <section class="panel logs-panel">
+      <div class="panel-heading"><div><p class="number">03 / DIAGNOSTICS</p><h2>运行日志</h2></div></div>
+      <pre id="logs">等待节点输出…</pre>
+    </section>
+  </main>
+
+  <div id="toast" role="status"></div>
+  <script src="/urdf_viewer.bundle.js?v=20260907-6"></script>
+  <script src="/app.js?v=20260907-7"></script>
+</body>
+</html>

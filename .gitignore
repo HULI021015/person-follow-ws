@@ -1,0 +1,35 @@
+# ROS2 build
+build/
+install/
+log/
+Log/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# IDE
+.vscode/
+.idea/
+
+# Runtime logs
+*.log
+*.log.txt
+
+# ROS bags
+*.bag
+*.db3
+*.mcap
+
+# TensorRT generated files
+*.engine
+
+# Archives / backups
+*.tar.gz
+*.zip
+
+# Local environment
+.env
+.env.*
+!.env.example

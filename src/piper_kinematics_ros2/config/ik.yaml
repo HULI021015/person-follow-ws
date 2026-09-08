@@ -1,0 +1,24 @@
+# piper_ik:
+#   ros__parameters:
+#     base_frame: base_link
+#     max_iterations: 100
+#     position_tolerance: 0.002
+#     orientation_tolerance: 0.03
+#     damping_factor: 0.10
+#     max_joint_step: 1.0
+#     default_speed_percent: 30.0
+
+piper_ik:
+  ros__parameters:
+    base_frame: base_link
+    # ROS1 grasp_ws style: compute IK and publish it; do not reject a valid
+    # solver output again because of extra ROS2-side jump/workspace filters.
+    max_iterations: 300
+    position_tolerance: 0.005
+    orientation_tolerance: 0.30
+    damping_factor: 0.1
+    max_joint_step: 0.0
+    enforce_joint_step_limit: false
+    validate_joint_limits: false
+    default_speed_percent: 30.0
+

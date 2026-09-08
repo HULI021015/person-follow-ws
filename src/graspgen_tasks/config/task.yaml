@@ -1,0 +1,57 @@
+grasp_task:
+  ros__parameters:
+    base_frame: base_link
+    pose_timeout: 0.5
+    ik_timeout: 2.0
+    motion_settle_time: 1.5
+    gripper_settle_time: 0.5
+
+    # 唯一保留的抓取方案：SAM3-style。
+    # 目标中心 -> 法兰预抓取位 -> 抓取位 -> 撤退位 -> 放置位 -> 松爪 -> 准备姿态。
+    sam3_tool_length: 0.075
+    sam3_penetration: 0.045
+    sam3_approach_angle_deg: 45.0
+    sam3_pull_back: 0.005
+    sam3_lateral_offset: -0.025
+    sam3_pregrasp_distance: 0.10
+    sam3_retreat_extra_z: 0.05
+    sam3_min_flange_z: -0.60
+    sam3_min_fingertip_z: -0.60
+    sam3_finger_half_width: 0.0425
+    sam3_max_target_radius: 0.66
+    sam3_yaw_offset_deg: 0.0
+
+    orientation_retry_enabled: true
+    orientation_retry_max_pitch_deg: 25.0
+    orientation_retry_max_roll_deg: 15.0
+    orientation_retry_spiral_step_deg: 5.0
+    orientation_retry_max_candidates: 80
+
+    place_orientation_retry_enabled: true
+    place_yaw_offset_deg: 0.0
+    place_approach_angle_deg: 45.0
+    keep_gripper_closed_on_abort_after_grasp: true
+    open_width: 0.07
+    closed_width: 0.0
+
+    enable_workspace_check: false
+    workspace_min: [0.12, -0.45, -0.60]
+    workspace_max: [0.85, 0.45, 0.65]
+    place_position: [0.0, -0.40, 0.40]
+    auto_execute: false
+
+    startup_move_home: true
+    return_home_after_place: true
+    home_joint_names: [joint1, joint2, joint3, joint4, joint5, joint6, gripper]
+    home_joint_positions: [0.0, 0.785, -1.20, 0.0, 1.155, 0.0, 0.07]
+    home_joint_velocity: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 60.0]
+    home_joint_effort: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.5]
+    home_motion_time: 5.0
+    home_command_period: 0.5
+    home_joint_tolerance: 0.06
+    home_wait_for_feedback: false
+
+    # “停止机械臂节点”使用：六轴先回机械零点；夹爪默认张开。
+    # 若任务取消时已夹住物体，节点会保持夹爪闭合，只回六轴零点。
+    shutdown_joint_positions: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.07]
+    shutdown_motion_time: 10.0

@@ -1,0 +1,19 @@
+# Calibrated wrist-camera extrinsic generated from:
+#   /home/zheng/piper_handeye_ros2/results/2026-07-02_13-54-07_calibration.json
+#
+# The active TF is published by robot_state_publisher from:
+#   piper_description/urdf/piper_description.urdf
+wrist_camera:
+  parent_frame: link6
+  camera_base_frame: camera_base
+  camera_frame: camera_link
+  calibrated_link6_to_camera_link:
+    xyz: [-0.08094894, 0.00423940, 0.04114984]
+    rpy: [-0.36138290, 0.02351438, -1.55723446]
+    quaternion_xyzw: [-0.11980153, 0.13443403, -0.68931027, 0.70173103]
+  camera_base_to_link6:
+    xyz: [-0.08094894, 0.00423940, 0.04114984]
+    rpy: [-0.36138290, 0.02351438, -1.55723446]
+  camera_link_to_camera_base:
+    xyz: [0.0, 0.0, 0.0]
+    rpy: [0.0, 0.0, 0.0]

@@ -1,0 +1,12 @@
+chassis_node:
+  ros__parameters:
+    cmd_vel_topic: /cmd_vel
+    can_host: 192.168.0.7
+    can_port: 5578
+    max_linear_speed: 1.257
+    max_angular_speed: 1.67
+    command_timeout: 0.5
+    reconnect_period: 2.0
+    publish_odom: true
+    odom_frame: odom
+    base_frame: base_link

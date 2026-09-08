@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>person_follower</name>
+  <version>1.0.0</version>
+  <description>Dahua NetSDK, PlaySDK, YOLOv8 and BoT-SORT person-following controller.</description>
+  <maintainer email="maintainer@example.com">person_follow_ws</maintainer>
+  <license>Apache-2.0</license>
+  <depend>rclpy</depend>
+  <depend>geometry_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <exec_depend>ament_index_python</exec_depend>
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>python3-opencv</exec_depend>
+  <exec_depend>python3-numpy</exec_depend>
+  <test_depend>python3-pytest</test_depend>
+  <export><build_type>ament_python</build_type></export>
+</package>

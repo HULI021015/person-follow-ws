@@ -1,0 +1,32 @@
+person_follower_node:
+  ros__parameters:
+    cmd_vel_topic: /cmd_vel
+    camera_ip: 192.168.1.21
+    camera_port: 37777
+    camera_user: admin
+    camera_password: "123456baoye!!"
+    camera_channel: 0
+    camera_stream: extra
+    model_path: yolov8n.pt
+    tracker: botsort.yaml
+    device: auto
+    confidence: 0.20
+    image_size: 640
+    control_rate: 20.0
+    frame_timeout: 0.7
+    max_control_latency: 0.50
+    lost_limit_frames: 15
+    target_width_ratio: 0.385
+    linear_gain: 0.65
+    angular_gain: 1.10
+    width_deadzone_ratio: 0.10
+    center_deadzone_ratio: 0.05
+    max_forward_speed: 0.35
+    max_reverse_speed: 0.12
+    max_angular_speed: 0.80
+    allow_reverse: false
+    smoothing_alpha: 0.35
+    show_window: false
+    publish_debug_image: true
+    debug_image_topic: /person_follower/debug/compressed
+    debug_jpeg_quality: 80

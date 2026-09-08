@@ -1,0 +1,18 @@
+graspgen_yolov8_seg:
+  ros__parameters:
+    engine_path: ""
+    labels_path: ""
+    color_image_topic: /camera/color/image_raw
+    aligned_depth_topic: /camera/depth/image_raw
+    camera_info_topic: /camera/color/camera_info
+    camera_frame: camera_color_optical_frame
+    depth_scale: 0.001
+    confidence_threshold: 0.5
+    mask_threshold: 0.6
+    max_depth_m: 1.5
+    min_points: 80
+    point_stride: 2
+    gripper_max_opening: 0.10
+    target_classes: [bottle]
+    publish_debug_image: true
+    show_gui: false

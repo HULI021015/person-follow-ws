@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>yk_can_sdk</name>
+  <version>0.1.0</version>
+  <description>USR-CAN115 four-wheel chassis Python SDK packaged for ROS 2.</description>
+  <maintainer email="maintainer@example.com">person_follow_ws</maintainer>
+  <license>Apache-2.0</license>
+  <exec_depend>python3</exec_depend>
+  <export><build_type>ament_python</build_type></export>
+</package>
+
