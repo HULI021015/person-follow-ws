@@ -22,8 +22,6 @@ __pycache__/
 *.db3
 *.mcap
 
-# TensorRT generated files
-*.engine
 
 # Archives / backups
 *.tar.gz
